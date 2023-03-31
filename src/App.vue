@@ -8,7 +8,7 @@
       <div class="cards-container">
         <div class="card">
           <p class="main-text">
-
+             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti iusto ipsum dolor quia harum veniam neque! Ex nobis, omnis consequuntur doloremque quis quibusdam debitis, error blanditiis asperiores eveniet aspernatur necessitatibus!
           </p>
           <p class="date">
 
@@ -55,5 +55,17 @@
     border-radius: 100%;
     color:white;
     font-size: 20px;
+  }
+
+  .card{
+    width: 225px;
+    height: 225px;
+    background-color: rgb(237, 182, 44);
+    padding: 10px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px;
   }
 </style>
