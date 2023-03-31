@@ -3,6 +3,8 @@
 
   // adding a state to the modal
   const showModal = ref(false);
+
+  const newNote = ref("Hello world");
   
 </script>
 
@@ -11,15 +13,19 @@
     <!-- render page if showModal is true -->
     <div v-if="showModal" class="overlay">
       <div class="modal">
-        <textarea name="note" id="note" cols="30" rows="10"></textarea>
+        <!-- add two way binding using model directive -->
+        {{ newNote }}
+        <textarea v-model="newNote" name="note" id="note" cols="30" rows="10"></textarea>
+
         <button>Add Note</button>
         <button @click="showModal = false" class="close">Close</button>
+
       </div>
     </div>
 
     <div class="container">
       <header>
-        <h1>Notes {{showModal}} </h1>
+        <h1>Notes</h1>
         <button @click="showModal = true">+</button>
       </header>
 
@@ -32,7 +38,7 @@
             31/03/2023
           </p>
         </div>
-        
+
         <div class="card">
           <p class="main-text">
              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti iusto ipsum dolor quia harum veniam neque! Ex nobis, omnis consequuntur doloremque quis quibusdam debitis, error blanditiis 
