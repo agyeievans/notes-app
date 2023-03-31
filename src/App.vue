@@ -1,17 +1,28 @@
+<script setup>
+  import {ref} from "vue";
+
+  // adding a state to the modal
+  const showModal = ref(false);
+  
+</script>
+
 <template>
   <main>
-    <!-- <div class="overlay">
+    <!-- render page if showModal is true -->
+    <div v-if="showModal" class="overlay">
       <div class="modal">
         <textarea name="note" id="note" cols="30" rows="10"></textarea>
         <button>Add Note</button>
-        <button class="close">Close</button>
+        <button @click="showModal = false" class="close">Close</button>
       </div>
-    </div> -->
+    </div>
+
     <div class="container">
       <header>
-        <h1>Notes</h1>
-        <button>+</button>
+        <h1>Notes {{showModal}} </h1>
+        <button @click="showModal = true">+</button>
       </header>
+
       <div class="cards-container">
         <div class="card">
           <p class="main-text">
@@ -21,6 +32,7 @@
             31/03/2023
           </p>
         </div>
+        
         <div class="card">
           <p class="main-text">
              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti iusto ipsum dolor quia harum veniam neque! Ex nobis, omnis consequuntur doloremque quis quibusdam debitis, error blanditiis 
@@ -83,7 +95,7 @@
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 20px;
-    margin-right: 6px;
+    margin-right: 10px;
   }
 
   .date{
