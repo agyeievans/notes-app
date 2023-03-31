@@ -10,13 +10,19 @@ const newNote = ref("");
 // a state array to store notes
 const notes = ref([]);
 
+// state to store error message
+const errorMessage = ref("");
+
 // function to generate random color
 function getRandomColor() {
   return "hsl(" + Math.random() * 360 + ", 100%, 75%)";
 }
 
-// handler for add note click event
+// handler for add note click event and validation check
 const addNote = () => {
+  if(newNote.value.length < 4){
+    return errorMessage.value = "Note need to be 4 characters or more"
+  }
   notes.value.push({
     id: Math.floor(Math.random() * 1000000),
     text: newNote.value,
@@ -29,6 +35,9 @@ const addNote = () => {
 
   // clear textarea after adding a new note
   newNote.value = "";
+
+  // clear error message
+  errorMessage.value = "";
 }
 
 </script>
@@ -39,7 +48,9 @@ const addNote = () => {
     <div v-if="showModal" class="overlay">
       <div class="modal">
         <!-- add two way binding using model directive -->
-        <textarea v-model="newNote" name="note" id="note" cols="30" rows="10"></textarea>
+        <textarea v-model.trim="newNote" name="note" id="note" cols="30" rows="10"></textarea>
+        <!-- display error message -->
+        <p v-if="errorMessage">{{errorMessage}}</p>
 
         <button @click="addNote">Add Note</button>
 
@@ -172,5 +183,9 @@ header button {
 .modal .close {
   background-color: rgb(193, 15, 15);
   margin-top: 7px;
+}
+
+.modal p{
+  color: red;
 }
 </style>
